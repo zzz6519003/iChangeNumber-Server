@@ -27,6 +27,24 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def create_mobile
+    name = params[:name]
+    email = params[:email]
+    password = params[:password]
+    password_confirmation = password
+    #name = "zzz3311"
+    #email = "zzzq@aasdf.com"
+    #password = "wanjyyt"
+    #password_confirmation = "wanjyyt"
+    @user = User.new({:name =>name, :email =>email, :password =>password, :password_confirmation =>password_confirmation})
+    if @user.save
+      sign_in @user
+      render json: @user
+    else
+      render 'new'
+    end
+  end
 
   def edit
   end

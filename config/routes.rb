@@ -21,6 +21,8 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
 
   match '/post_mobile', to: 'microposts#create_mobile'
+  match '/home_mobile', to: 'static_pages#home_mobile'
+  match '/find_friend', to: 'static_pages#find_mobile'
   
 
   # The priority is based upon order of creation:

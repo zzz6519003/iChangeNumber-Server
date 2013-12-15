@@ -14,6 +14,16 @@ class SessionsController < ApplicationController
     end
   end
 
+  def new_mobile
+    user = User.find_by_email(params[:email])
+    if user && user.authenticate(params[:password])
+      render :json => user
+    else
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
+    end
+  end
+
   def destroy
     sign_out
     redirect_to root_url

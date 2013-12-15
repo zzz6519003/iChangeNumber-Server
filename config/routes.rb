@@ -14,6 +14,7 @@ SampleApp::Application.routes.draw do
   match '/signup_mobile',   to: 'users#create_mobile'
   
   match '/signin',  to: 'sessions#new'
+  match '/signin_mobile',   to: 'sessions#new_mobile'
   match '/signout', to: 'sessions#destroy', via: :delete
       
   match '/help',    to: 'static_pages#help'

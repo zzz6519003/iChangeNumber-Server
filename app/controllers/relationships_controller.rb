@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-  before_filter :signed_in_user
+  before_filter :signed_in_user ,except: :create_mobile
 
   respond_to :html, :js
 
@@ -7,6 +7,13 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:relationship][:followed_id])
     current_user.follow!(@user)
     respond_with @user
+  end
+
+  def create_mobile
+    user = User.find_by_remember_token(params[:token])
+    id = params[:id]
+    @user = User.find(id)
+    user.follow!(@user)
   end
 
   def destroy

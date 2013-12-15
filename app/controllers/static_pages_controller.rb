@@ -29,7 +29,8 @@ class StaticPagesController < ApplicationController
     renren_id_array = params[:params]
     renren_id_array.each do |uid|
       user = User.find_by_renren_id uid
-      matched_user.append user
+
+      matched_user.append user unless !user
     end
     render :json => matched_user
 

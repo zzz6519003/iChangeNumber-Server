@@ -7,7 +7,7 @@ SampleApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-      
+
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'
@@ -24,6 +24,7 @@ SampleApp::Application.routes.draw do
   match '/home_mobile', to: 'static_pages#home_mobile'
   match '/find_friend', to: 'static_pages#find_mobile'
   match '/match_friend', to: 'static_pages#match_mobile'
+  match '/follow_mobile', to: 'relationships#create_mobile'
   
 
   # The priority is based upon order of creation:
